@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "openapi-annotations"
+version = "0.1.0"
+description = ""
+authors = ["Mathias Colpaert <mathias.colpaert@trensition.eu>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "^1.5.4"
+rope = "^0.18.0"
+pylint = "^2.6.0"
+python-dateutil = "^2.8.1"
+openapi-spec-validator = "^0.3.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

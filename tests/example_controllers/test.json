@@ -1,0 +1,210 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "test api",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/events": {
+            "get": {
+                "operationId": "tests.example_controllers.event_routes.events_get",
+                "description": "Gets a page of events.",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ids",
+                        "in": "query",
+                        "description": "Ids to match."
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "modifiedAt",
+                        "in": "query",
+                        "description": "Filter on the last modification date. Use an exact date, or a date range e.g. '[2018-01-01,2019-01-01[', ']2018-01-01,' or '2015-01-01'",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "createdAt",
+                        "in": "query",
+                        "description": "Filter on the creation date. Use an exact date, or a date range e.g. '[2018-01-01,2019-01-01[', ']2018-01-01,' or '2015-01-01'",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortDirection",
+                        "in": "query",
+                        "description": "The direction to sort by (asc or desc).",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "asc",
+                                "desc"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "sortColumn",
+                        "in": "query",
+                        "description": "The database field to sort by. Use python_syntax for the field name.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "take",
+                        "in": "query",
+                        "description": "Number of records to return. Use value -1 to get all data.",
+                        "schema": {
+                            "type": "integer",
+                            "minimum": -1
+                        }
+                    },
+                    {
+                        "name": "skip",
+                        "in": "query",
+                        "description": "The number of data records to skip before fetching a page.",
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "description": "Unexpected internal server error."
+                    },
+                    "200": {
+                        "description": "Success."
+                    }
+                }
+            },
+            "post": {
+                "operationId": "tests.example_controllers.event_routes.events_post",
+                "description": "Creates a new event and returns it.",
+                "responses": {
+                    "500": {
+                        "description": "Unexpected internal server error."
+                    },
+                    "400": {
+                        "description": "Invalid input data."
+                    },
+                    "201": {
+                        "description": "Resource was created successfully."
+                    }
+                }
+            }
+        },
+        "/events/{eventId}": {
+            "delete": {
+                "operationId": "tests.example_controllers.event_routes.events_event_id_delete",
+                "description": "Deletes an event.",
+                "parameters": [
+                    {
+                        "name": "eventId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Id of the event.",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "description": "Unexpected internal server error."
+                    },
+                    "404": {
+                        "description": "Could not find data."
+                    },
+                    "204": {
+                        "description": "Operation succeeded. Nothing to return."
+                    }
+                }
+            },
+            "get": {
+                "operationId": "tests.example_controllers.event_routes.events_event_id_get",
+                "description": "Gets an event by its id.",
+                "parameters": [
+                    {
+                        "name": "eventId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Id of the event.",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "description": "Unexpected internal server error."
+                    },
+                    "404": {
+                        "description": "Could not find data."
+                    },
+                    "200": {
+                        "description": "Success."
+                    }
+                }
+            },
+            "put": {
+                "operationId": "tests.example_controllers.event_routes.events_event_id_put",
+                "description": "Updates an event by its id.",
+                "parameters": [
+                    {
+                        "name": "eventId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Id of the event.",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "500": {
+                        "description": "Unexpected internal server error."
+                    },
+                    "400": {
+                        "description": "Invalid input data."
+                    },
+                    "404": {
+                        "description": "Could not find data."
+                    },
+                    "204": {
+                        "description": "Operation succeeded. Nothing to return."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "requestBodies": {},
+        "schemas": {}
+    }
+}
